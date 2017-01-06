@@ -11,7 +11,7 @@
 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 	">
 	<context:component-scan base-package="pl.mg.rest"></context:component-scan>
-	<mvc:annotation-driven></mvc:annotation-driven>
-
-
+   <mvc:annotation-driven></mvc:annotation-driven>
+   
+   
 </beans>
