@@ -1,16 +1,25 @@
 package pl.mg.rest.controller;
 
+import java.util.Random;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import pl.mg.rest.model.User;
 
 @RestController
 public class HelloController {
 
-	@RequestMapping(method = RequestMethod.GET, value = "/hello/{name}")
-	public String getHello(@PathVariable String name) {
-		return "hello spring 4=" + name;
+	//@RequestMapping(method = RequestMethod.GET, value = "/hello/{name}", produces = "application/json; charset=UTF-8")
+	@GetMapping(value = "/hello/{name}")
+	public ResponseEntity getHello(@PathVariable String name) {
+	    User user = new User();
+	    user.setName(name);
+	    user.setAge(new Random().nextInt(50));
+		return new ResponseEntity(user, HttpStatus.OK);
 	}
 
 }
