@@ -10,6 +10,11 @@
    <version>1.0.0</version>
 
 
+   <description>
+      Project made with REST API design tutorial from Spring:
+      https://www.youtube.com/watch?v=oG2rotiGr90
+   </description>
+
    <properties>
       <!-- <plugin.type>portlet</plugin.type>
       <liferay.version>6.2.3</liferay.version>
