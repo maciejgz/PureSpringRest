@@ -1,16 +1,18 @@
 package pl.mg.doorsgame.web;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import pl.mg.doorsgame.exception.GameNotFoundException;
+import pl.mg.doorsgame.exception.InvalidGameIdFormatException;
 import pl.mg.doorsgame.model.Game;
 import pl.mg.doorsgame.repository.GameRepository;
 
@@ -22,7 +24,8 @@ public class GamesController {
     GameRepository gameRepository;
 
     @RequestMapping(value = "/{gameId}", method = RequestMethod.GET)
-    public ResponseEntity<Object> getGame(@PathVariable("gameId") int gameId) {
+    public ResponseEntity<Object> getGame(@PathVariable("gameId") int gameId)
+            throws InvalidGameIdFormatException, GameNotFoundException {
         Game retrievedGame = gameRepository.retrieve(gameId);
         return new ResponseEntity<Object>(retrievedGame, HttpStatus.OK);
     }
@@ -37,6 +40,18 @@ public class GamesController {
         Game createdGame = gameRepository.create();
         ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(createdGame, HttpStatus.CREATED);
         return responseEntity;
+    }
+
+    ////// Exception handling
+
+    @ExceptionHandler(value = { InvalidGameIdFormatException.class })
+    public ResponseEntity<String> handleInvalidGameId(InvalidGameIdFormatException e) {
+        return new ResponseEntity<String>("Invalid game id format", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = { GameNotFoundException.class })
+    public ResponseEntity<String> handleGameNotFound(GameNotFoundException e) {
+        return new ResponseEntity<String>("Game for that id is not found", HttpStatus.BAD_REQUEST);
     }
 
 }

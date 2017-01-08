@@ -7,6 +7,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import pl.mg.doorsgame.exception.GameNotFoundException;
+import pl.mg.doorsgame.exception.InvalidGameIdFormatException;
 import pl.mg.doorsgame.model.Game;
 import pl.mg.doorsgame.model.GameStatus;
 
@@ -18,7 +20,6 @@ import pl.mg.doorsgame.model.GameStatus;
 @Repository
 public class InMemoryGameRepository implements GameRepository {
 
-    
     private static Map<Integer, Game> games = new HashMap<>();
 
     @Autowired
@@ -34,9 +35,16 @@ public class InMemoryGameRepository implements GameRepository {
     }
 
     @Override
-    public Game retrieve(int gameId) {
-        // TODO Auto-generated method stub
-        return null;
+    public Game retrieve(int gameId) throws InvalidGameIdFormatException, GameNotFoundException {
+        if (gameId < 0) {
+            throw new InvalidGameIdFormatException();
+        }
+        for (Integer searchedGameId : games.keySet()) {
+            if (searchedGameId == gameId) {
+                return games.get(searchedGameId);
+            }
+        }
+        throw new GameNotFoundException();
     }
 
     @Override
