@@ -10,6 +10,6 @@ public interface GameRepository {
     
     public Game retrieve(int gameId) throws InvalidGameIdFormatException, GameNotFoundException;
     
-    public void remove(int gameId);
+    public void remove(int gameId) throws InvalidGameIdFormatException, GameNotFoundException;
     
 }

@@ -48,9 +48,19 @@ public class InMemoryGameRepository implements GameRepository {
     }
 
     @Override
-    public void remove(int gameId) {
-        // TODO Auto-generated method stub
-
+    public void remove(int gameId) throws InvalidGameIdFormatException, GameNotFoundException {
+        if (gameId <0){
+            throw new InvalidGameIdFormatException();
+        }
+        
+        for (Integer searchedGameId : games.keySet()) {
+            if (searchedGameId == gameId) {
+                games.remove(searchedGameId);
+                return;
+            }
+        }
+        
+        throw new GameNotFoundException();
     }
 
     private int getNextGameId() {

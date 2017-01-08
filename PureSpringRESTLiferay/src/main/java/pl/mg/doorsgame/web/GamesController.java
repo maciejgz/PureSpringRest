@@ -42,8 +42,14 @@ public class GamesController {
         return responseEntity;
     }
 
-    ////// Exception handling
+    @RequestMapping(value = "/{gameId}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> removeGame(@PathVariable("gameId") int gameId)
+            throws InvalidGameIdFormatException, GameNotFoundException {
+        gameRepository.remove(gameId);
+        return new ResponseEntity<Object>("Game: " + gameId + " removed", HttpStatus.OK);
+    }
 
+    ////// Exception handling
     @ExceptionHandler(value = { InvalidGameIdFormatException.class })
     public ResponseEntity<String> handleInvalidGameId(InvalidGameIdFormatException e) {
         return new ResponseEntity<String>("Invalid game id format", HttpStatus.BAD_REQUEST);
