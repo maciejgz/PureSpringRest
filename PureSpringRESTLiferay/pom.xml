@@ -13,6 +13,10 @@
    <description>
       Project made with REST API design tutorial from Spring:
       https://www.youtube.com/watch?v=oG2rotiGr90
+      
+      added swagger:
+      - json version of API documentation: http://localhost:8080/PureSpringRESTLiferay/v2/api-docs
+      - html version of the API: http://localhost:8080/PureSpringRESTLiferay/swagger-ui.html
    </description>
 
    <properties>
@@ -25,6 +29,7 @@
       <liferay.app.server.portal.dir>C:\programy\liferay-ce-portal-7.0-ga3\tomcat-8.0.32\webapps\ROOT</liferay.app.server.portal.dir>
       <pluginName>${project.artifactId}</pluginName> -->
       <spring.version>4.3.5.RELEASE</spring.version>
+      <swagger.version>2.6.1</swagger.version>
    </properties>
 
    <build>
@@ -89,6 +94,18 @@
          <groupId>com.fasterxml.jackson.core</groupId>
          <artifactId>jackson-databind</artifactId>
          <version>2.8.5</version>
+      </dependency>
+      
+      <!-- Swagger -->
+      <dependency>
+         <groupId>io.springfox</groupId>
+         <artifactId>springfox-swagger2</artifactId>
+         <version>${swagger.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>io.springfox</groupId>
+         <artifactId>springfox-swagger-ui</artifactId>
+         <version>${swagger.version}</version>
       </dependency>
    
 	

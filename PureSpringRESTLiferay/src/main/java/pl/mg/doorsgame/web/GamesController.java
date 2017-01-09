@@ -29,7 +29,7 @@ public class GamesController {
         Game retrievedGame = gameRepository.retrieve(gameId);
         return new ResponseEntity<Object>(retrievedGame, HttpStatus.OK);
     }
-
+    
     /**
      * Creating the game with usage location of the created user
      * @return
@@ -41,6 +41,8 @@ public class GamesController {
         ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(createdGame, HttpStatus.CREATED);
         return responseEntity;
     }
+    
+    
 
     @RequestMapping(value = "/{gameId}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> removeGame(@PathVariable("gameId") int gameId)
