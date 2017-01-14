@@ -28,8 +28,7 @@ public class InMemoryGameRepository implements GameRepository {
     @Override
     public Game create() {
         int nextGameId = getNextGameId();
-        Game createdGame = new Game.GameBuilder(nextGameId).gameStatus(GameStatus.NOT_STARTED)
-                .doors(doorRepository.generateDoors()).build();
+        Game createdGame = new Game.GameBuilder(nextGameId).gameStatus(GameStatus.NOT_STARTED).doors(doorRepository.generateDoors()).build();
         games.put(nextGameId, createdGame);
         return createdGame;
     }
@@ -49,17 +48,17 @@ public class InMemoryGameRepository implements GameRepository {
 
     @Override
     public void remove(int gameId) throws InvalidGameIdFormatException, GameNotFoundException {
-        if (gameId <0){
+        if (gameId < 0) {
             throw new InvalidGameIdFormatException();
         }
-        
+
         for (Integer searchedGameId : games.keySet()) {
             if (searchedGameId == gameId) {
                 games.remove(searchedGameId);
                 return;
             }
         }
-        
+
         throw new GameNotFoundException();
     }
 

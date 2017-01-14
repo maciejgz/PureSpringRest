@@ -12,7 +12,7 @@ public class Game {
         this.gameId = gameBuilder.gameId;
         this.gameStatus = gameBuilder.gameStatus;
         this.doors = gameBuilder.doors;
-        
+
     }
 
     public static class GameBuilder {

@@ -13,13 +13,13 @@ import pl.mg.rest.model.User;
 @RestController
 public class HelloController {
 
-	//@RequestMapping(method = RequestMethod.GET, value = "/hello/{name}", produces = "application/json; charset=UTF-8")
-	@GetMapping(value = "/hello/{name}")
-	public ResponseEntity<Object> getHello(@PathVariable String name) {
-	    User user = new User();
-	    user.setName(name);
-	    user.setAge(new Random().nextInt(50));
-		return new ResponseEntity<Object>(user, HttpStatus.OK);
-	}
+    // @RequestMapping(method = RequestMethod.GET, value = "/hello/{name}", produces = "application/json; charset=UTF-8")
+    @GetMapping(value = "/hello/{name}")
+    public ResponseEntity<Object> getHello(@PathVariable String name) {
+        User user = new User();
+        user.setName(name);
+        user.setAge(new Random().nextInt(50));
+        return new ResponseEntity<Object>(user, HttpStatus.OK);
+    }
 
 }

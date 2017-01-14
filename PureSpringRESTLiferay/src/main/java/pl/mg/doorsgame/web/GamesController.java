@@ -24,16 +24,16 @@ public class GamesController {
     GameRepository gameRepository;
 
     @RequestMapping(value = "/{gameId}", method = RequestMethod.GET)
-    public ResponseEntity<Object> getGame(@PathVariable("gameId") int gameId)
-            throws InvalidGameIdFormatException, GameNotFoundException {
+    public ResponseEntity<Object> getGame(@PathVariable("gameId") int gameId) throws InvalidGameIdFormatException, GameNotFoundException {
         Game retrievedGame = gameRepository.retrieve(gameId);
         return new ResponseEntity<Object>(retrievedGame, HttpStatus.OK);
     }
-    
+
     /**
      * Creating the game with usage location of the created user
+     * 
      * @return
-     * @throws URISyntaxException 
+     * @throws URISyntaxException
      */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Object> createGame() throws URISyntaxException {
@@ -41,23 +41,22 @@ public class GamesController {
         ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(createdGame, HttpStatus.CREATED);
         return responseEntity;
     }
-    
-    
+
+
 
     @RequestMapping(value = "/{gameId}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> removeGame(@PathVariable("gameId") int gameId)
-            throws InvalidGameIdFormatException, GameNotFoundException {
+    public ResponseEntity<Object> removeGame(@PathVariable("gameId") int gameId) throws InvalidGameIdFormatException, GameNotFoundException {
         gameRepository.remove(gameId);
         return new ResponseEntity<Object>("Game: " + gameId + " removed", HttpStatus.OK);
     }
 
     ////// Exception handling
-    @ExceptionHandler(value = { InvalidGameIdFormatException.class })
+    @ExceptionHandler(value = {InvalidGameIdFormatException.class})
     public ResponseEntity<String> handleInvalidGameId(InvalidGameIdFormatException e) {
         return new ResponseEntity<String>("Invalid game id format", HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = { GameNotFoundException.class })
+    @ExceptionHandler(value = {GameNotFoundException.class})
     public ResponseEntity<String> handleGameNotFound(GameNotFoundException e) {
         return new ResponseEntity<String>("Game for that id is not found", HttpStatus.BAD_REQUEST);
     }
