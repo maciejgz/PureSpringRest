@@ -1,4 +1,4 @@
-package pl.mg.doorsgame.swagger;
+package pl.mg.doorsgame.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

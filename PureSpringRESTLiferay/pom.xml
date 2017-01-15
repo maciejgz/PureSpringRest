@@ -33,6 +33,7 @@
    </properties>
 
    <build>
+   		<finalName>PureSpringRESTLiferay</finalName>
       <plugins>
 			<!-- <plugin>
 				<groupId>com.liferay.maven.plugins</groupId>
