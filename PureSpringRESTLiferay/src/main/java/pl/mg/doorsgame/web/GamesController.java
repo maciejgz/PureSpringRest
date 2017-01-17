@@ -1,6 +1,7 @@
 package pl.mg.doorsgame.web;
 
 import java.net.URISyntaxException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pl.mg.doorsgame.exception.GameNotFoundException;
 import pl.mg.doorsgame.exception.InvalidGameIdFormatException;
+import pl.mg.doorsgame.model.Door;
 import pl.mg.doorsgame.model.Game;
 import pl.mg.doorsgame.repository.GameRepository;
 
@@ -47,6 +49,16 @@ public class GamesController {
     public ResponseEntity<Object> removeGame(@PathVariable("gameId") int gameId) throws InvalidGameIdFormatException, GameNotFoundException {
         gameRepository.remove(gameId);
         return new ResponseEntity<Object>("Game: " + gameId + " removed", HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/{gameId}/doors", method = RequestMethod.GET)
+    public ResponseEntity<List<Door>> getDoors(@PathVariable("gameId") int gameId) throws InvalidGameIdFormatException, GameNotFoundException {
+
+        Game game = gameRepository.retrieve(gameId);
+        List<Door> doors = game.getDoors();
+
+        return new ResponseEntity<List<Door>>(doors, HttpStatus.OK);
     }
 
     ////// Exception handling

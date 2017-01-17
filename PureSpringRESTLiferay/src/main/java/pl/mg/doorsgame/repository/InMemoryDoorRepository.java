@@ -9,6 +9,11 @@ import pl.mg.doorsgame.model.Door;
 import pl.mg.doorsgame.model.DoorStatus;
 import pl.mg.doorsgame.model.Prize;
 
+/**
+ * 
+ * @author Maciej Gzik
+ *
+ */
 @Repository
 public class InMemoryDoorRepository implements DoorRepository {
 
