@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ScheduleTester {
 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 600000)
     public void scheduleFixedDelayTask() {
         System.out.println("Fixed delay task - " + System.currentTimeMillis() / 1000);
     }
