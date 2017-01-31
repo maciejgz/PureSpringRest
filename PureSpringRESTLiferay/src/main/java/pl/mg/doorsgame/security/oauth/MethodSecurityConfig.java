@@ -1,4 +1,4 @@
-package pl.mg.doorsgame.security;
+package pl.mg.doorsgame.security.oauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -12,8 +12,8 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
  * @author m
  *
  */
-@Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
+//@Configuration
+//@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
 
     @Autowired

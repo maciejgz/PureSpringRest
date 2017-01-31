@@ -1,4 +1,4 @@
-package pl.mg.doorsgame.security;
+package pl.mg.doorsgame.security.oauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,8 +17,8 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
  * @author m
  *
  */
-@Configuration
-@EnableAuthorizationServer
+//@Configuration
+//@EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     private static String REALM = "MY_OAUTH_REALM";
