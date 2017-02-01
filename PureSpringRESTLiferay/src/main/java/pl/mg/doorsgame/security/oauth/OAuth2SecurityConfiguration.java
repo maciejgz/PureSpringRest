@@ -65,7 +65,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     //@Bean
-    @Autowired
+    //@Autowired
     public TokenStoreUserApprovalHandler userApprovalHandler(TokenStore tokenStore) {
         TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
         handler.setTokenStore(tokenStore);
@@ -75,7 +75,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     //@Bean
-    @Autowired
+    //@Autowired
     public ApprovalStore approvalStore(TokenStore tokenStore) throws Exception {
         TokenApprovalStore store = new TokenApprovalStore();
         store.setTokenStore(tokenStore);

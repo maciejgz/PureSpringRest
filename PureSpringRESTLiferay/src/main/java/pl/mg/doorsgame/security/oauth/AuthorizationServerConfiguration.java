@@ -23,14 +23,14 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     private static String REALM = "MY_OAUTH_REALM";
 
-    @Autowired
+    //@Autowired
     private TokenStore tokenStore;
 
-    @Autowired
+    //@Autowired
     private UserApprovalHandler userApprovalHandler;
 
-    @Autowired
-    @Qualifier("authenticationManagerBean")
+    //@Autowired
+    //@Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     /**
