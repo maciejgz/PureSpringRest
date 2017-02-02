@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
+/**
+ * Pozwala na wylogowanie po zalogowaniu w BasicHTTP - metoda commence
+ * @author m
+ *
+ */
 public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
     
