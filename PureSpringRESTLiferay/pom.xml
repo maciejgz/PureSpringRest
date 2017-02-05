@@ -29,6 +29,7 @@
 			<liferay.app.server.lib.global.dir>C:\programy\liferay-ce-portal-7.0-ga3\tomcat-8.0.32\lib\ext</liferay.app.server.lib.global.dir> 
 			<liferay.app.server.portal.dir>C:\programy\liferay-ce-portal-7.0-ga3\tomcat-8.0.32\webapps\ROOT</liferay.app.server.portal.dir> 
 			<pluginName>${project.artifactId}</pluginName> -->
+		<liferay.version>6.2.5</liferay.version>
 		<spring.version>4.3.5.RELEASE</spring.version>
 		<spring.security.version>4.2.1.RELEASE</spring.security.version>
 		<swagger.version>2.6.1</swagger.version>
@@ -61,6 +62,15 @@
 				<artifactId>maven-resources-plugin</artifactId>
 				<configuration>
 					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- just for tests - do not commit -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<outputDirectory>c:\programy\liferay-portal-6.2-ce-ga6\deploy\</outputDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -153,12 +163,24 @@
 
 
 		<!-- Liferay -->
-		<!-- <dependency> <groupId>com.liferay.portal</groupId> <artifactId>portal-service</artifactId> 
-			<version>${liferay.version}</version> <scope>provided</scope> </dependency> 
-			<dependency> <groupId>com.liferay.portal</groupId> <artifactId>util-java</artifactId> 
-			<version>${liferay.version}</version> <scope>provided</scope> </dependency> 
-			<dependency> <groupId>javax.portlet</groupId> <artifactId>portlet-api</artifactId> 
-			<version>2.0</version> <scope>provided</scope> </dependency> -->
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>portal-service</artifactId>
+			<version>${liferay.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.portal</groupId>
+			<artifactId>util-java</artifactId>
+			<version>${liferay.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.portlet</groupId>
+			<artifactId>portlet-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
