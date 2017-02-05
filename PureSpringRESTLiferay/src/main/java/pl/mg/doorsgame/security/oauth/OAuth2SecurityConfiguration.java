@@ -22,8 +22,8 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
  * @author m
  *
  */
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private ClientDetailsService clientDetailsService;
@@ -32,7 +32,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
         //tu trzeba zmienic na customowy serwis obsługi userow
         //auth.userDetailsService(userDetailsService)
-        
+
         auth.inMemoryAuthentication() //
                 .withUser("bill") //
                 .password("abc123")//
@@ -50,7 +50,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    //@Bean
+    @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
@@ -59,13 +59,13 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
      * Do przeglądu cała klasa TokenStore w celu wyboru najlepszego składowiska tokenów
      * @return
      */
-    //@Bean
+    @Bean
     public TokenStore tokenStore() {
         return new InMemoryTokenStore();
     }
 
-    //@Bean
-    //@Autowired
+    @Bean
+    @Autowired
     public TokenStoreUserApprovalHandler userApprovalHandler(TokenStore tokenStore) {
         TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
         handler.setTokenStore(tokenStore);
@@ -74,8 +74,8 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return handler;
     }
 
-    //@Bean
-    //@Autowired
+    @Bean
+    @Autowired
     public ApprovalStore approvalStore(TokenStore tokenStore) throws Exception {
         TokenApprovalStore store = new TokenApprovalStore();
         store.setTokenStore(tokenStore);

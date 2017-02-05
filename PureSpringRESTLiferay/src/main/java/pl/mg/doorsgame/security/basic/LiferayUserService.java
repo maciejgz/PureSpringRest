@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 import pl.mg.doorsgame.liferay.service.UserService;
 import pl.mg.doorsgame.model.LiferayUser;
 
-@Component
+//@Component
 public class LiferayUserService implements UserDetailsService {
 
-    @Autowired
+    //@Autowired
     UserService userService;
 
     /*static {

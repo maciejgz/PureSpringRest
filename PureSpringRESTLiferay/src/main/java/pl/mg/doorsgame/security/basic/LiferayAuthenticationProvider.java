@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 
 import pl.mg.doorsgame.liferay.service.UserService;
 
-@Component("liferayAuthenticationProvider")
+//@Component("liferayAuthenticationProvider")
 public class LiferayAuthenticationProvider implements AuthenticationProvider {
 
     public LiferayAuthenticationProvider() {
         super();
     }
 
-    @Autowired
+    //@Autowired
     UserService userService = new UserService();
 
     @Override

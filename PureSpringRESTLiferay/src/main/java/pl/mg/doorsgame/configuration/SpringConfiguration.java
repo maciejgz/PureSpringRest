@@ -7,9 +7,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+@Configuration
 @EnableWebMvc
 @EnableScheduling
-@Configuration
 @ComponentScan(basePackages="pl.mg")
 public class SpringConfiguration extends WebMvcConfigurerAdapter {
 
